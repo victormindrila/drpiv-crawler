@@ -1,5 +1,13 @@
 const axios = require('axios');
 const cron = require('node-cron');
+const http = require('http');
+
+const requestListener = function(req, res) {
+	res.writeHead(200);
+	res.end('Hello, World!');
+};
+
+const server = http.createServer(requestListener);
 
 const sendEmail = require('./mailer');
 
@@ -57,6 +65,9 @@ const go = async () => {
 	}
 };
 
+//schedule
 // cron.schedule('1 * * * * *', go);
-
 cron.schedule('0 0 */3 * * *', go);
+
+//ping listener
+server.listen(process.env.PORT || 3000);
