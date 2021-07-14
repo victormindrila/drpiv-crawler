@@ -66,8 +66,11 @@ const go = async () => {
 };
 
 //schedule
-// cron.schedule('1 * * * * *', go);
-cron.schedule('1 * * * * *', go);
+if (!process.env.CRON_SCHEDULE) {
+	throw new Error('Please provide a cron schedule');
+}
+
+cron.schedule(process.env.CRON_SCHEDULE, go);
 
 //ping listener
 server.listen(process.env.PORT || 3000);
