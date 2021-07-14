@@ -67,7 +67,7 @@ const go = async () => {
 
 //schedule
 // cron.schedule('1 * * * * *', go);
-cron.schedule('0 0 */3 * * *', go);
+cron.schedule('1 * * * * *', go);
 
 //ping listener
 server.listen(process.env.PORT || 3000);
