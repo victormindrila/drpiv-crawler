@@ -1,0 +1,24 @@
+{
+  "name": "dpriv-checker",
+  "version": "1.0.0",
+  "description": "A script which will programmatically check the available schedule of Bucharest DPRIV",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bunyan": "^1.8.15",
+    "dotenv": "^10.0.0",
+    "googleapis": "^81.0.0",
+    "node-cron": "^3.0.0",
+    "nodemailer": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
