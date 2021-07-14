@@ -27,6 +27,7 @@ const go = async () => {
 	const url = `https://www.drpciv.ro/drpciv-booking-api/getCalendar?start=${start}&end=${end}&activityCode=4&countyCode=23`;
 
 	const res = await axios.get(url).catch((error) => console.log(error));
+	console.log(res.data);
 
 	const availableDates = Object.keys(res.data);
 
@@ -51,15 +52,16 @@ const go = async () => {
 	</body>
 	`;
 
-	const emailOptions = {
-		subject: 'Programari disponibile',
-		html: template,
-		to: process.env.EMAIL,
-		from: process.env.EMAIL
-	};
-
 	try {
-		sendEmail(emailOptions);
+		if (availableDates.length > 0) {
+			const emailOptions = {
+				subject: 'Programari disponibile',
+				html: template,
+				to: process.env.EMAIL,
+				from: process.env.EMAIL
+			};
+			sendEmail(emailOptions);
+		}
 	} catch (error) {
 		console.log(error);
 	}
